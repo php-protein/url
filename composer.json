@@ -1,0 +1,20 @@
+{
+    "name": "protein/url",
+    "description": "Helper object for parsing, building and handling URLs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stefano Azzolini",
+            "email": "lastguest@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "autoload": {
+        "PSR-4": {
+            "Protein\\": "src/"
+        }
+    }
+}
