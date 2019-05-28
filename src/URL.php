@@ -5,11 +5,11 @@
  *
  * Helper object for handling URLs
  *
- * @package Protein
+ * @package Proteins
  * @author  "Stefano Azzolini"  <lastguest@gmail.com>
  */
 
-namespace Protein;
+namespace Proteins;
 
 class URL {
     private $_origin   = '';

@@ -7,13 +7,13 @@
 ---
 
 ```
-composer require protein/url
+composer require proteins/url
 ```
 
 Require the class via :
 
 ```php
-use Protein\URL;
+use Proteins\URL;
 ```
 
 ### Parse an URL
