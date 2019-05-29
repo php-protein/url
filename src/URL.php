@@ -24,7 +24,7 @@ class URL {
     private $fragment  = false;
 
     public function __construct($url=''){
-        if (empty($url) || !is_string($url)) {
+        if (empty($url) || !\is_string($url)) {
             return;
         }
         $this->_origin = $url;
@@ -32,9 +32,9 @@ class URL {
 
     private function parse(){
         $url          = $this->_origin;
-        $tmp_url      = (strpos($url, '://') === false) ? "..N..://$url" : $url;
-        if (mb_detect_encoding($tmp_url, 'UTF-8', true) || ($parsed = parse_url($tmp_url)) === false) {
-            preg_match('(^((?P<scheme>[^:/?#]+):(//))?((\\3|//)?(?:(?P<user>[^:]+):(?P<pass>[^@]+)@)?(?P<host>[^/?:#]*))(:(?P<port>\\d+))?(?P<path>[^?#]*)(\\?(?P<query>[^#]*))?(#(?P<fragment>.*))?)u', $tmp_url, $parsed);
+        $tmp_url      = (\strpos($url, '://') === false) ? "..N..://$url" : $url;
+        if (\mb_detect_encoding($tmp_url, 'UTF-8', true) || ($parsed = \parse_url($tmp_url)) === false) {
+            \preg_match('(^((?P<scheme>[^:/?#]+):(//))?((\\3|//)?(?:(?P<user>[^:]+):(?P<pass>[^@]+)@)?(?P<host>[^/?:#]*))(:(?P<port>\\d+))?(?P<path>[^?#]*)(\\?(?P<query>[^#]*))?(#(?P<fragment>.*))?)u', $tmp_url, $parsed);
         }
         foreach ($parsed as $k => $v) {
             if (isset($this->$k)) {
@@ -45,7 +45,7 @@ class URL {
             $this->scheme = null;
         }
         if (!empty($this->query)) {
-            parse_str($this->query, $this->query);
+            \parse_str($this->query, $this->query);
         }
         $this->_parsed = true;
     }
@@ -83,7 +83,7 @@ class URL {
                 $d[] = "/" . ltrim($this->path, "/");
             }
             if (!empty($this->query)) {
-                $d[] = "?" . http_build_query($this->query);
+                $d[] = "?" . \http_build_query($this->query);
             }
             if ($this->fragment) {
                 $d[] = "#{$this->fragment}";
